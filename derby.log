@@ -1,8 +1,8 @@
-Mon Jul 16 16:08:41 CEST 2018 : Apache Derby Network Server 10.11.1.2 - (1629631) wurde gestartet und ist bereit, Verbindungen auf Port 1527 zu akzeptieren.
+Tue Jul 17 12:09:24 CEST 2018 : Apache Derby Network Server 10.11.1.2 - (1629631) wurde gestartet und ist bereit, Verbindungen auf Port 1527 zu akzeptieren.
 ----------------------------------------------------------------
-Mon Jul 16 16:09:09 CEST 2018:
-Booten von Derby-Version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): Instanz a816c00e-0164-a36c-005f-ffffea6370d3
-für Datenbankverzeichnis C:\Users\dachs\Dropbox\Kurse\4. Semester\Systementwicklung\Projekte\hardliner\seg7-hardliner mit Class Loader sun.misc.Launcher$AppClassLoader@266474c2
+Tue Jul 17 12:09:24 CEST 2018:
+Booten von Derby-Version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): Instanz a816c00e-0164-a7b7-47b2-00005fc48c7c
+für Datenbankverzeichnis C:\Users\dachs\Dropbox\Kurse\4. Semester\Systementwicklung\Projekte\se2018hardliner\seg7-hardliner mit Class Loader sun.misc.Launcher$AppClassLoader@266474c2
 Geladen aus file:/C:/Program%20Files/Java/jdk1.8.0_152/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_152-b16
@@ -10,5 +10,5 @@ user.dir=C:\Program Files\Java\jdk1.8.0_152\db
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
-derby.system.home=C:\Users\dachs\Dropbox\Kurse\4. Semester\Systementwicklung\Projekte\hardliner
+derby.system.home=C:\Users\dachs\Dropbox\Kurse\4. Semester\Systementwicklung\Projekte\se2018hardliner
 Datenbank-Class Loader wurde gestartet - derby.database.classpath=''
