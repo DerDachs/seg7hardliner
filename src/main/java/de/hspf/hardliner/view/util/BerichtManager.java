@@ -38,15 +38,13 @@ import java.io.Serializable;
 @Named(value = "berichtManager")
 @SessionScoped
 public class BerichtManager implements Serializable {
+    
     @EJB
     private BerichtFacade ejbFacade;
     private List<Bericht> items = null;
     private Bericht selected;
 
     
-    /**
-     * Creates a new instance of BerichtManager
-     */
     public BerichtManager() {
     }
     
@@ -130,6 +128,10 @@ public class BerichtManager implements Serializable {
 
     public Bericht getBericht(java.lang.Long id) {
         return getFacade().find(id);
+    }
+    
+    public List<Bericht> getBerichte(){
+        return getFacade().findAll();
     }
 
     public List<Bericht> getItemsAvailableSelectMany() {
