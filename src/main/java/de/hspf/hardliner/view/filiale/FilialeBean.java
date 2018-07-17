@@ -64,7 +64,7 @@ public class FilialeBean {
         selectFiliale = new ArrayList<>();
         int i = 0;
         for (Filiale filiale : f) {
-            selectFiliale.add(new SelectItem(i, (SelectItem) filiale.getFilialname()));
+            selectFiliale.add(new SelectItem(i, filiale.getFilialname()));
             i++;
         }        
         return selectFiliale;
