@@ -5,9 +5,12 @@
  */
 package de.hspf.hardliner.view.filiale;
 
+import de.hspf.hardliner.model.Filiale;
 import de.hspf.hardliner.view.bericht.*;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
@@ -61,5 +64,29 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+
+    public List<Filiale> findRegion(String bland) {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        Query q = getEntityManager().createQuery(cq);
+        q.setMaxResults(1);
+        q.setParameter("Bundesland", bland);
+        return (List<Filiale>) q.getParameterValue("Region");
+    }
     
+    public List<Filiale> findFiliale(String region){
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        Query q = getEntityManager().createQuery(cq);
+        q.setParameter("Region", region);
+        return (List<Filiale>) q.getParameterValue("Filiale");
+    }
+    
+    public List<Filiale> findBundesland(){
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        Query q = getEntityManager().createQuery(cq);
+        return (List<Filiale>) q.getParameterValue("Bundesland");
+    }
+
 }

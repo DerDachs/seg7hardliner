@@ -6,14 +6,10 @@
 package de.hspf.hardliner.view.util;
 
 import de.hspf.hardliner.model.Bericht;
+import de.hspf.hardliner.model.Filiale;
 import de.hspf.hardliner.model.Users;
 import de.hspf.hardliner.view.bericht.BerichtFacade;
-import de.hspf.hardliner.view.user.AbstractFacade;
-import de.hspf.hardliner.view.util.JsfUtil.PersistAction;
-import de.hspf.hardliner.view.user.UsersFacade;
-import de.hspf.hardliner.view.user.UsersFacade;
-import de.hspf.hardliner.view.util.JsfUtil;
-
+import de.hspf.hardliner.view.filiale.FilialeFacade;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,32 +23,32 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
-import java.io.Serializable;
 
 /**
  *
  * @author dachs
  */
-@Named(value = "berichtManager")
+@Named(value = "filialeManager")
 @SessionScoped
-public class BerichtManager implements Serializable {
-    
-    @EJB
-    private BerichtFacade ejbFacade;
-    private List<Bericht> items = null;
-    private Bericht selected;
+public class FilialeManager implements Serializable {
 
     
-    public BerichtManager() {
+    @EJB
+    private FilialeFacade ejbFacade;
+    private List<Filiale> items = null;
+    private Filiale selected;
+
+    /**
+     * Creates a new instance of FilialManager
+     */
+    public FilialeManager() {
     }
     
-    public Bericht getSelected() {
+    public Filiale getSelected() {
         return selected;
     }
 
-    public void setSelected(Bericht selected) {
+    public void setSelected(Filiale selected) {
         this.selected = selected;
     }
     
@@ -62,47 +58,47 @@ public class BerichtManager implements Serializable {
     protected void initializeEmbeddableKey() {
     }
     
-    public BerichtFacade getFacade() {
+    public FilialeFacade getFacade() {
         return ejbFacade;
     }
     
-    public Bericht prepareCreate() {
-        selected = new Bericht();
+    public Filiale prepareCreate() {
+        selected = new Filiale();
         initializeEmbeddableKey();
         return selected;
     }
     
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BerichtCreated"));
+        persist(JsfUtil.PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("FilialeCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BerichtUpdated"));
+        persist(JsfUtil.PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("FilialeUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("BerichtDeleted"));
+        persist(JsfUtil.PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("FilialeDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Bericht> getItems() {
+    public List<Filiale> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
         return items;
     }
 
-    private void persist(PersistAction persistAction, String successMessage) {
+    private void persist(JsfUtil.PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
             try {
-                if (persistAction != PersistAction.DELETE) {
+                if (persistAction != JsfUtil.PersistAction.DELETE) {
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
@@ -126,35 +122,43 @@ public class BerichtManager implements Serializable {
         }
     }
 
-    public Bericht getBericht(java.lang.Long id) {
+    public Filiale getFiliale(java.lang.Long id) {
         return getFacade().find(id);
     }
     
-    public List<Bericht> getBerichte(){
+    public List<Filiale> getBLand(){
+        return getFacade().findBundesland();
+    }
+    
+    public List<Filiale> getRegion(String bland){
+        return getFacade().findRegion(bland);
+    }
+    
+    public List<Filiale> getFiliale(String region){
+        return getFacade().findFiliale(region);
+    }
+
+    public List<Filiale> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Bericht> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
-    }
-
-    public List<Bericht> getItemsAvailableSelectOne() {
+    public List<Filiale> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
     
 
-    @FacesConverter(forClass = Bericht.class)
-    public static class BerichtControllerConverter implements Converter {
+    @FacesConverter(forClass = Filiale.class)
+    public static class FilialeControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BerichtManager controller = (BerichtManager) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "berichtController");
-            return controller.getBericht(getKey(value));
+            FilialeManager controller = (FilialeManager) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "FilialeController");
+            return controller.getFiliale(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -174,7 +178,7 @@ public class BerichtManager implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Bericht) {
+            if (object instanceof Filiale) {
                 Bericht o = (Bericht) object;
                 return getStringKey(o.getBerichtid());
             } else {
@@ -185,3 +189,6 @@ public class BerichtManager implements Serializable {
 
     }
 }
+
+    
+

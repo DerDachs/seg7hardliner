@@ -26,45 +26,53 @@
             <div class="card">
                 <div class="container">
                     <div class="card-content">
-                        <div id="countrypick" class="input-field center-align" >
-                            <select>
-                                <option value="" >Land auswählen</option>
-                                <option value="1">Deutschland</option>
-                                <option value="2">Österreich</option>
-                                <option value="3">Schweiz</option>
-                            </select>
-                            <label>Länderwahl</label>
-                        </div>
-                        <div id="regionpick" class="input-field center-align">
-                            <select>
-                                <option value="">Region auswählen</option>
-                                <option value="1">Deutschland</option>
-                                <option value="2">Österreich</option>
-                                <option value="3">Schweiz</option>
-                            </select>
-                            <label>Regionwahl</label>
-                        </div>
-                        <div id="filialpick" class="input-field center-align">
-                            <select>
-                                <option value="">Filiale auswählen</option>
-                                <option value="1">Deutschland</option>
-                                <option value="2">Österreich</option>
-                                <option value="3">Schweiz</option>
-                            </select>
-                            <label>Filialwahl</label>
-                        </div>
+                        <h:form>
+                            <h:selectOneMenu id="bland" value="#{filialeBean.filialeSelected}">
+                                <f:selectItem value="Select Bundesland" noSelectionOption="true"/>
+                                <f:selectItems value="#{filialeBean.bundesland}" />
+                                <f:ajax execute="bland" render="region"/>
+                            </h:selectOneMenu>
+<!--                            <h:selectOneMenu id="region" value="#{filialeBean.filialeSelected}">
+                                <f:selectItem value="Select Region" noSelectionOption="true"/>
+                                <f:selectItems value="#{filialeBean.region}"/>
+                                <f:ajax execute="region" render="filiale"/>
+                            </h:selectOneMenu>
+                            <h:selectOneMenu id="filiale" value="#{filialeBean.filialeSelected}">
+                                <f:selectItem value="Select Region" noSelectionOption="true"/>
+                                <f:selectItems value="#{filialeBean.filiale}"/>
+                                <f:ajax execute="filiale" />
+                            </h:selectOneMenu>-->
+                            <div id="regionpick" class="input-field center-align">
+                                <select>
+                                    <option value="">Region auswählen</option>
+                                    <option value="1">Deutschland</option>
+                                    <option value="2">Österreich</option>
+                                    <option value="3">Schweiz</option>
+                                </select>
+                                <label>Regionwahl</label>
+                            </div>
+                            <div id="filialpick" class="input-field center-align">
+                                <select>
+                                    <option value="">Filiale auswählen</option>
+                                    <option value="1">Deutschland</option>
+                                    <option value="2">Österreich</option>
+                                    <option value="3">Schweiz</option>
+                                </select>
+                                <label>Filialwahl</label>
+                            </div>
 
-                        <!--                        <div id="datepick" class="input-field center-align ">
-                                                    <input id="datepick" type="text" class="datepicker"/>
-                                                    <label>Datumswahl</label>
-                                                </div>-->
+
+                            <!--                        <div id="datepick" class="input-field center-align ">
+                                                        <input id="datepick" type="text" class="datepicker"/>
+                                                        <label>Datumswahl</label>
+                                                    </div>-->
 
 
-                        <div  class="input-field center-align">
-                            <input type="date" class="datepicker "></input>
-                            <label>Date</label>
-                        </div>
-
+                            <div  class="input-field center-align">
+                                <input type="date" class="datepicker "></input>
+                                <label>Date</label>
+                            </div>
+                        </h:form>
 
                         <p:separator/>
                         <a id="uploadBtn" href="proupload.xhtml" class=" btn-large   pink darken-3 waves-effect waves-pink white-text tooltipped" data-position="bottom" data-tooltip="HELP aves-effect waves-light ME"><i class="material-icons right">file_upload</i>hochladen</a>
@@ -95,7 +103,7 @@
 
         <script>
             $(document).ready(function () {
-                $('select').formSelect();
+                $('select').material_select();
                 $('.datepicker').pickadate({
                     selectMonths: true, // Creates a dropdown to control month
                     selectYears: 15 // Creates a dropdown of 15 years to control year
@@ -108,22 +116,22 @@
 
 
 
-//            $(document).ready(function () {
-//                $('select').formSelect();
-//                $('.datepicker').datepicker({
-//                    autoClose: true,
-//                    format: 'dd mmm yyyy',
-//                    setDefaultDate: true
-//                });
-//                $('.tooltipped').tooltip();
-//            });
+            //            $(document).ready(function () {
+            //                $('select').formSelect();
+            //                $('.datepicker').datepicker({
+            //                    autoClose: true,
+            //                    format: 'dd mmm yyyy',
+            //                    setDefaultDate: true
+            //                });
+            //                $('.tooltipped').tooltip();
+            //            });
 
-//            $(document).ready(function () {
-//                $('.datepicker').pickadate({
-//                    selectMonths: true, // Creates a dropdown to control month
-//                    selectYears: 15 // Creates a dropdown of 15 years to control year
-//                });
-//            });
+            //            $(document).ready(function () {
+            //                $('.datepicker').pickadate({
+            //                    selectMonths: true, // Creates a dropdown to control month
+            //                    selectYears: 15 // Creates a dropdown of 15 years to control year
+            //                });
+            //            });
         </script>        
     </h:body>
 </ui:composition>
