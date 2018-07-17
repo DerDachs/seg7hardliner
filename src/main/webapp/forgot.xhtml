@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <!-- Compiled and minified CSS -->
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/materialize.css"/>
+        <h:outputStylesheet name="css/homestyle.css"/>
+
+        <!--Import JQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    <h:body>
+        <script src="resources/scripts/wz_tooltip.js" type="text/javascript" space="preserve"></script>
+        <div class="center-align">
+            <div id="loginContainer" class="container">
+                <div class="row offset-m3">
+                    <div class="col s6 offset-m3">
+                        <div id="loginCard" class="card large">
+                            <div class="card-content center">
+                                <!--LoginHeader (Group) -->
+                                <div id="loginHeader" class="center-align">                                                             
+                                </div>
+                                <!--  Card-Title - Login -->
+                                <div class="card-title">
+                                    <i class="small material-icons">account_box</i> <span
+                                        class="card-title">Passwort vergessen</span>
+                                </div>
+                            </div>
+                            <h:form>
+                                <h:panelGrid columns="2" id="matchGrid" cellpadding="500">
+                                        <p:outputLabel for="email" value="E-Mail:" />
+                                        <p:inputMask id="email" value="#{maskView.email}" mask="(999) 999-9999? x99999" placeholder="max.mustermann@emailhost.de"/>
+
+                                        <!--  Send Button -->
+                                        <div id="emailsenden">                                           
+                                            <h:commandLink id="emailsendenButton" value="send" class="btn blue-grey" type="submit" ><i class="material-icons right">send<a href="login.xhtml"></a></i></h:commandLink>
+<!--                                            <a class="btn tooltipped" data-position="bottom" data-tooltip="send Email to reset your password"></a>-->
+                                        </div>
+
+                                </h:panelGrid>
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</ui:composition>
