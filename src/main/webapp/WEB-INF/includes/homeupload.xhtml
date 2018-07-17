@@ -25,32 +25,41 @@
             <div id="uploadContainer" class="container">
                 <div class="row offset-s3">
                     <div class="col s6 offset-s3">
+                    
                         <div class="card">
                             <div class="card-content">
 
+                                
+                                
                                 <img class="materialboxed center" width="800" src="images/project7upload/platzhalter.jpg" alt="" />
 
 
 
-                                <div class="row">
+                               
                                     <div class="input-field">
                                         <input id="gang_inline" type="text" class="validate">
                                             <label for="gang_inline">Gang Nr.</label>
                                         </input>
                                     </div>
-                                </div>
+                                
                                 <h:form enctype="multipart/form-data">
                                     <p:growl id="messages" showDetail="true" />
 
-                                    <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="true"/>
+                                    <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="true"> </p:fileUpload>
+                                    <br/>
+                                    <br/>
+                                    
                                     <p:commandButton value="Upload" ajax="false" actionListener="#{fileUploadController.upload()}" onclick="M.toast({html: 'Bild wird hochgeladen!'})" class="btn pink darken-3 white-text waves-effect waves-pink " />
+                                    
+                                   
+                                    
+            
                                 </h:form>
-
-
-
+                                
 
                             </div>
                         </div>
+                        <a href="prohomepage.xhtml" class=" black-text waves-effect " style="text-align: center"><i class="tiny material-icons ">arrow_back</i>  zu den Berichten  </a>
                     </div>
                 </div>
             </div>
