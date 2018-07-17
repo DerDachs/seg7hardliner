@@ -43,17 +43,35 @@ and open the template in the editor.
                                 </div>
                             </div>
                             <h:form>
-                                <h:panelGrid columns="2" id="matchGrid" cellpadding="500">
-                                        <p:outputLabel for="email" value="E-Mail:" />
-                                        <p:inputMask id="email" value="#{maskView.email}" mask="(999) 999-9999? x99999" placeholder="max.mustermann@emailhost.de"/>
 
-                                        <!--  Send Button -->
-                                        <div id="emailsenden">                                           
-                                            <h:commandLink id="emailsendenButton" value="send" class="btn blue-grey" type="submit" ><i class="material-icons right">send<a href="login.xhtml"></a></i></h:commandLink>
-<!--                                            <a class="btn tooltipped" data-position="bottom" data-tooltip="send Email to reset your password"></a>-->
+
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        E-Mail-Adresse:
+                                        <div class="input-field inline">
+                                            <input id="email_inline" type="email" class="validate"/>
+                                            <label for="email_inline">bitte hier eingeben</label>
+                                            <span class="helper-text" data-error="wrong" data-success="right"></span>
                                         </div>
-
-                                </h:panelGrid>
+                                    </div>
+                                </div>
+                                <a href="login.xhtml" style="align-content: center" class=" pink darken-3 waves-effect  white-text waves-light btn">Absenden</a>
+                                
+                                
+                                <!--                                <h:panelGrid columns="2" id="matchGrid" cellpadding="500">
+                                                                        <p:outputLabel for="email" value="E-Mail:" />
+                                                                        <p:inputMask id="email" value="#{maskView.email}" mask="(999) 999-9999? x99999" placeholder="max.mustermann@emailhost.de"/>
+                                
+                                                                          Send Button 
+                                                                        <div id="emailsenden" style="align-content: center">                                           
+                                                                            
+                                                                            <a href="login.xhtml"  class=" pink darken-3 waves-effect white-text waves-light btn">Abschicken</a>
+                                                                            <h:commandLink id="emailsendenButton" value="send" class="btn blue-grey" type="submit" ><i class="material-icons right">send<a href="login.xhtml"></a></i></h:commandLink>
+                                                                            <a class="btn tooltipped" data-position="bottom" data-tooltip="send Email to reset your password"></a>
+                                                                        </div>
+                                
+                                                                </h:panelGrid>-->
 
                             </h:form>
                         </div>
