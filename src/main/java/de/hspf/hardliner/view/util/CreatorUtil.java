@@ -1,6 +1,5 @@
 package de.hspf.hardliner.view.util;
 
-import de.hspf.hardliner.model.Bericht;
 import de.hspf.hardliner.model.Task;
 import de.hspf.hardliner.model.Task.TaskType;
 import de.hspf.hardliner.model.Users;
@@ -58,21 +57,5 @@ public class CreatorUtil {
         return task;
     }
 
-    public Collection<Bericht> createBerichtList(){
-        Collection<Bericht> berichte = new ArrayList<>();
-        berichte.add(createBericht(1,"Bericht 1","Nordschwarzwald",24));
-        berichte.add(createBericht(2,"Bericht 2","Schwaben",12));
-        berichte.add(createBericht(3,"Bericht 3","Loreley",34));
-        berichte.add(createBericht(4,"Bericht 4","Köln",64));
-        return berichte;
-    }
-    
-    public Bericht createBericht(long id, String name, String filiale, int gang){
-        Bericht bericht = new Bericht();
-        bericht.setId(id);
-        bericht.setName(name);
-        bericht.setFiliale(filiale);
-        bericht.setGang(gang);
-        return bericht;
-    }
+
 }

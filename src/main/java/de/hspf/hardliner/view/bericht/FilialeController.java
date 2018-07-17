@@ -5,7 +5,7 @@
  */
 package de.hspf.hardliner.view.bericht;
 
-import de.hspf.hardliner.model.Bericht;
+import de.hspf.hardliner.model.Filiale;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import javax.faces.FacesException;
@@ -25,16 +25,16 @@ import javax.persistence.PersistenceUnit;
  *
  * @author dachs
  */
-public class BerichtController {
+public class FilialeController {
 
-    public BerichtController() {
+    public FilialeController() {
         pagingInfo = new PagingInfo();
-        converter = new BerichtConverter();
+        converter = new FilialeConverter();
     }
-    private Bericht bericht = null;
-    private List<Bericht> berichtItems = null;
-    private BerichtFacade jpaController = null;
-    private BerichtConverter converter = null;
+    private Filiale filiale = null;
+    private List<Filiale> filialeItems = null;
+    private FilialeFacade jpaController = null;
+    private FilialeConverter converter = null;
     private PagingInfo pagingInfo = null;
     @Resource
     private UserTransaction utx = null;
@@ -48,41 +48,41 @@ public class BerichtController {
         return pagingInfo;
     }
 
-    public BerichtFacade getJpaController() {
+    public FilialeFacade getJpaController() {
         if (jpaController == null) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            jpaController = (BerichtFacade) facesContext.getApplication().getELResolver().getValue(facesContext.getELContext(), null, "berichtJpa");
+            jpaController = (FilialeFacade) facesContext.getApplication().getELResolver().getValue(facesContext.getELContext(), null, "filialeJpa");
         }
         return jpaController;
     }
 
-    public SelectItem[] getBerichtItemsAvailableSelectMany() {
+    public SelectItem[] getFilialeItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(getJpaController().findAll(), false);
     }
 
-    public SelectItem[] getBerichtItemsAvailableSelectOne() {
+    public SelectItem[] getFilialeItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(getJpaController().findAll(), true);
     }
 
-    public Bericht getBericht() {
-        if (bericht == null) {
-            bericht = (Bericht) JsfUtil.getObjectFromRequestParameter("jsfcrud.currentBericht", converter, null);
+    public Filiale getFiliale() {
+        if (filiale == null) {
+            filiale = (Filiale) JsfUtil.getObjectFromRequestParameter("jsfcrud.currentFiliale", converter, null);
         }
-        if (bericht == null) {
-            bericht = new Bericht();
+        if (filiale == null) {
+            filiale = new Filiale();
         }
-        return bericht;
+        return filiale;
     }
 
     public String listSetup() {
         reset(true);
-        return "bericht_list";
+        return "filiale_list";
     }
 
     public String createSetup() {
         reset(false);
-        bericht = new Bericht();
-        return "bericht_create";
+        filiale = new Filiale();
+        return "filiale_create";
     }
 
     public String create() {
@@ -92,7 +92,7 @@ public class BerichtController {
         }
         try {
             Exception transactionException = null;
-            getJpaController().create(bericht);
+            getJpaController().create(filiale);
             try {
                 utx.commit();
             } catch (javax.transaction.RollbackException ex) {
@@ -100,7 +100,7 @@ public class BerichtController {
             } catch (Exception ex) {
             }
             if (transactionException == null) {
-                JsfUtil.addSuccessMessage("Bericht was successfully created.");
+                JsfUtil.addSuccessMessage("Filiale was successfully created.");
             } else {
                 JsfUtil.ensureAddErrorMessage(transactionException, "A persistence error occurred.");
             }
@@ -116,31 +116,31 @@ public class BerichtController {
     }
 
     public String detailSetup() {
-        return scalarSetup("bericht_detail");
+        return scalarSetup("filiale_detail");
     }
 
     public String editSetup() {
-        return scalarSetup("bericht_edit");
+        return scalarSetup("filiale_edit");
     }
 
     private String scalarSetup(String destination) {
         reset(false);
-        bericht = (Bericht) JsfUtil.getObjectFromRequestParameter("jsfcrud.currentBericht", converter, null);
-        if (bericht == null) {
-            String requestBerichtString = JsfUtil.getRequestParameter("jsfcrud.currentBericht");
-            JsfUtil.addErrorMessage("The bericht with id " + requestBerichtString + " no longer exists.");
+        filiale = (Filiale) JsfUtil.getObjectFromRequestParameter("jsfcrud.currentFiliale", converter, null);
+        if (filiale == null) {
+            String requestFilialeString = JsfUtil.getRequestParameter("jsfcrud.currentFiliale");
+            JsfUtil.addErrorMessage("The filiale with id " + requestFilialeString + " no longer exists.");
             return relatedOrListOutcome();
         }
         return destination;
     }
 
     public String edit() {
-        String berichtString = converter.getAsString(FacesContext.getCurrentInstance(), null, bericht);
-        String currentBerichtString = JsfUtil.getRequestParameter("jsfcrud.currentBericht");
-        if (berichtString == null || berichtString.length() == 0 || !berichtString.equals(currentBerichtString)) {
+        String filialeString = converter.getAsString(FacesContext.getCurrentInstance(), null, filiale);
+        String currentFilialeString = JsfUtil.getRequestParameter("jsfcrud.currentFiliale");
+        if (filialeString == null || filialeString.length() == 0 || !filialeString.equals(currentFilialeString)) {
             String outcome = editSetup();
-            if ("bericht_edit".equals(outcome)) {
-                JsfUtil.addErrorMessage("Could not edit bericht. Try again.");
+            if ("filiale_edit".equals(outcome)) {
+                JsfUtil.addErrorMessage("Could not edit filiale. Try again.");
             }
             return outcome;
         }
@@ -150,7 +150,7 @@ public class BerichtController {
         }
         try {
             Exception transactionException = null;
-            getJpaController().edit(bericht);
+            getJpaController().edit(filiale);
             try {
                 utx.commit();
             } catch (javax.transaction.RollbackException ex) {
@@ -158,7 +158,7 @@ public class BerichtController {
             } catch (Exception ex) {
             }
             if (transactionException == null) {
-                JsfUtil.addSuccessMessage("Bericht was successfully updated.");
+                JsfUtil.addSuccessMessage("Filiale was successfully updated.");
             } else {
                 JsfUtil.ensureAddErrorMessage(transactionException, "A persistence error occurred.");
             }
@@ -174,7 +174,7 @@ public class BerichtController {
     }
 
     public String remove() {
-        String idAsString = JsfUtil.getRequestParameter("jsfcrud.currentBericht");
+        String idAsString = JsfUtil.getRequestParameter("jsfcrud.currentFiliale");
         Long id = new Long(idAsString);
         try {
             utx.begin();
@@ -190,7 +190,7 @@ public class BerichtController {
             } catch (Exception ex) {
             }
             if (transactionException == null) {
-                JsfUtil.addSuccessMessage("Bericht was successfully deleted.");
+                JsfUtil.addSuccessMessage("Filiale was successfully deleted.");
             } else {
                 JsfUtil.ensureAddErrorMessage(transactionException, "A persistence error occurred.");
             }
@@ -213,24 +213,24 @@ public class BerichtController {
         return listSetup();
     }
 
-    public List<Bericht> getBerichtItems() {
-        if (berichtItems == null) {
+    public List<Filiale> getFilialeItems() {
+        if (filialeItems == null) {
             getPagingInfo();
-            berichtItems = getJpaController().findRange(new int[]{pagingInfo.getFirstItem(), pagingInfo.getFirstItem() + pagingInfo.getBatchSize()});
+            filialeItems = getJpaController().findRange(new int[]{pagingInfo.getFirstItem(), pagingInfo.getFirstItem() + pagingInfo.getBatchSize()});
         }
-        return berichtItems;
+        return filialeItems;
     }
 
     public String next() {
         reset(false);
         getPagingInfo().nextPage();
-        return "bericht_list";
+        return "filiale_list";
     }
 
     public String prev() {
         reset(false);
         getPagingInfo().previousPage();
-        return "bericht_list";
+        return "filiale_list";
     }
 
     private String relatedControllerOutcome() {
@@ -257,8 +257,8 @@ public class BerichtController {
     }
 
     private void reset(boolean resetFirstItem) {
-        bericht = null;
-        berichtItems = null;
+        filiale = null;
+        filialeItems = null;
         pagingInfo.setItemCount(-1);
         if (resetFirstItem) {
             pagingInfo.setFirstItem(0);
@@ -266,10 +266,10 @@ public class BerichtController {
     }
 
     public void validateCreate(FacesContext facesContext, UIComponent component, Object value) {
-        Bericht newBericht = new Bericht();
-        String newBerichtString = converter.getAsString(FacesContext.getCurrentInstance(), null, newBericht);
-        String berichtString = converter.getAsString(FacesContext.getCurrentInstance(), null, bericht);
-        if (!newBerichtString.equals(berichtString)) {
+        Filiale newFiliale = new Filiale();
+        String newFilialeString = converter.getAsString(FacesContext.getCurrentInstance(), null, newFiliale);
+        String filialeString = converter.getAsString(FacesContext.getCurrentInstance(), null, filiale);
+        if (!newFilialeString.equals(filialeString)) {
             createSetup();
         }
     }
@@ -277,6 +277,5 @@ public class BerichtController {
     public Converter getConverter() {
         return converter;
     }
-    
     
 }

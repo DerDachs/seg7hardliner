@@ -5,57 +5,85 @@
  */
 package de.hspf.hardliner.model;
 
-
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author dachs
  */
 @Entity
-@Table(name = "BERICHT")
+@Table(name = "BERICHT", catalog = "", schema = "MEUSER")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Bericht.findAll", query = "SELECT b FROM Bericht b")
+    , @NamedQuery(name = "Bericht.findByBerichtid", query = "SELECT b FROM Bericht b WHERE b.berichtid = :berichtid")
+    , @NamedQuery(name = "Bericht.findByDatum", query = "SELECT b FROM Bericht b WHERE b.datum = :datum")
+    , @NamedQuery(name = "Bericht.findByGang", query = "SELECT b FROM Bericht b WHERE b.gang = :gang")
+    , @NamedQuery(name = "Bericht.findByName", query = "SELECT b FROM Bericht b WHERE b.name = :name")
+    , @NamedQuery(name = "Bericht.findByStatus", query = "SELECT b FROM Bericht b WHERE b.status = :status")})
 public class Bericht implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "BERICHTID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Size(max = 100)
-    @Column(name = "NAME")
-    private String name;
-    @Size(max = 100)
-    @Column(name = "DATUM")
-    private String date;
-    @Size(max = 100)
+    @Column(name = "BERICHTID", nullable = false)
+    private Long berichtid;
+    @Size(max = 255)
+    @Column(name = "DATUM", length = 255)
+    private String datum;
     @Column(name = "GANG")
-    private int gang;
-    @Size(max = 100)
-    @Column(name = "FILIALE")
-    private String Filiale;
-    
-    public Bericht(){
-        
+    private Integer gang;
+    @Size(max = 255)
+    @Column(name = "NAME", length = 255)
+    private String name;
+    @Column(name = "STATUS")
+    private Boolean status;
+    @JoinColumn(name = "FK_FILIALE", referencedColumnName = "FILIALID")
+    @ManyToOne
+    private Filiale fkFiliale;
+
+    public Bericht() {
     }
 
-    public long getId() {
-        return id;
+    public Bericht(Long berichtid) {
+        this.berichtid = berichtid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Long getBerichtid() {
+        return berichtid;
+    }
+
+    public void setBerichtid(Long berichtid) {
+        this.berichtid = berichtid;
+    }
+
+    public String getDatum() {
+        return datum;
+    }
+
+    public void setDatum(String datum) {
+        this.datum = datum;
+    }
+
+    public Integer getGang() {
+        return gang;
+    }
+
+    public void setGang(Integer gang) {
+        this.gang = gang;
     }
 
     public String getName() {
@@ -66,28 +94,45 @@ public class Bericht implements Serializable {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
-    public int getGang() {
-        return gang;
+    public Filiale getFkFiliale() {
+        return fkFiliale;
     }
 
-    public void setGang(int gang) {
-        this.gang = gang;
+    public void setFkFiliale(Filiale fkFiliale) {
+        this.fkFiliale = fkFiliale;
     }
 
-    public String getFiliale() {
-        return Filiale;
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (berichtid != null ? berichtid.hashCode() : 0);
+        return hash;
     }
 
-    public void setFiliale(String Filiale) {
-        this.Filiale = Filiale;
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Bericht)) {
+            return false;
+        }
+        Bericht other = (Bericht) object;
+        if ((this.berichtid == null && other.berichtid != null) || (this.berichtid != null && !this.berichtid.equals(other.berichtid))) {
+            return false;
+        }
+        return true;
     }
-        
+
+    @Override
+    public String toString() {
+        return "de.hspf.hardliner.model.Bericht[ berichtid=" + berichtid + " ]";
+    }
+    
 }

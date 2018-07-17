@@ -19,6 +19,14 @@
         <body>
             <h1><h:outputText value="JavaServer Faces"/></h1>
                 <h:form>
+                    <h:commandLink action="#{filiale.listSetup}" value="Show All Filiale Items"/>
+                </h:form>
+
+                <h:form>
+                    <h:commandLink action="#{bericht.listSetup}" value="Show All Bericht Items"/>
+                </h:form>
+
+                <h:form>
                     <h:commandLink action="#{bericht.listSetup}" value="Show All Bericht Items"/>
                 </h:form>
 

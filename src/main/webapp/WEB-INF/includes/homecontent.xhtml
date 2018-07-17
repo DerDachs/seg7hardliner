@@ -70,7 +70,7 @@
                         <a id="uploadBtn" href="proupload.xhtml" class=" btn-large   pink darken-3 waves-effect waves-pink white-text tooltipped" data-position="bottom" data-tooltip="HELP aves-effect waves-light ME"><i class="material-icons right">file_upload</i>hochladen</a>
                         <p:separator/>
                         <div id="tableBericht" class="responsive-table">
-                            <p:dataTable var="car" value="#{berichteBean.bericht}">
+                            <h:dataTable var="car" value="#{berichteBean.bericht}">
                                 <p:column headerText="Id" style="color: #ad1457; background-color: #bdbdbd">
                                     <h:outputText value="#{bericht.id}" />
                                 </p:column>
@@ -86,7 +86,7 @@
                                 <p:column headerText="Filiale" style="color: #ad1457; background-color: #bdbdbd">
                                     <h:outputText value="#{bericht.filiale}" />
                                 </p:column>
-                            </p:dataTable>
+                            </h:dataTable>
                         </div>
                     </div>
                 </div>
