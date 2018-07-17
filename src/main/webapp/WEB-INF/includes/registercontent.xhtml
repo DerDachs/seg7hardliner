@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <!-- Compiled and minified CSS -->
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/materialize.css"/>
+        <h:outputStylesheet name="css/homestyle.css"/>
+
+        <!--Import JQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    <h:body>
+        <script src="resources/scripts/wz_tooltip.js" type="text/javascript" space="preserve"></script>
+        <div class="center-align">
+            <div id="loginContainer" class="container">
+                <div class="row offset-s3">
+                    <div class="col s6 offset-s3">
+                        <div id="loginCard" class="card ">
+                            <div class="card-content center">
+                                <!--  LoginHeader (Group) -->
+                                <div id="loginHeader" class="center-align">
+                                    <!--  Card-Title - Login -->
+                                    <div class="card-title">
+                                        <i class="small material-icons">account_box</i> <span
+                                            class="card-title">Login</span>
+                                    </div>
+                                </div>
+                                <h:form>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <p:outputLabel for="name" value="Name: " />
+                                        <p:inputMask id="name" value="#{maskView.name}" mask=""/>
+
+                                        <p:outputLabel for="firstName" value="Vorname:" />
+                                        <p:inputMask id="firstName" value="#{maskView.firstName}" mask=""/>
+
+                                        <p:outputLabel for="email" value="E-Mail" />
+                                        <p:inputMask id="email" value="#{maskView.email}" mask="(999) 999-9999? x99999"/>
+
+                                        <h:panelGrid columns="2" id="matchGrid" cellpadding="5">                   
+                                            <h:outputLabel for="pwd1" value="Password:" />
+                                            <p:password id="pwd1" value="#{maskView.password}" match="pwd2" feedback="true" inline="true" label="Password" required="true"/>
+    
+                                            <h:outputLabel for="pwd2" value="Retype Password:" />
+                                            <p:password id="pwd2" value="#{maskView.password}" label="Retype Password" required="true" />
+                                        </h:panelGrid>
+
+                                        <p:commandButton value="Reset" type="reset" />
+                                        <p:commandButton value="Submit" update="matchGrid" oncomplete="PF('dlg').show()"/>
+                                    </h:panelGrid>
+
+<!--                                    <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Values" showEffect="fade"> 
+                                        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                                            <h:outputText value="Name: " />
+                                            <h:outputText id="name" value="#{maskView.name}" />
+
+                                            <h:outputText value="Vorname: " />
+                                            <h:outputText id="firstName" value="#{maskView.firstName}" />
+
+                                            <h:outputText value="E-Mail: " />
+                                            <h:outputText id="email" value="#{maskView.email}"/>
+
+                                            
+
+                                        </p:panelGrid>
+                                    </p:dialog>-->
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p:separator />
+    </h:body>
+</ui:composition>

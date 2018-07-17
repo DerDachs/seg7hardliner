@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12.06.2018, 15:38:08
+    Author     : dachs
+*/
+
+#countrypick{
+    margin-bottom:20px;
+    
+}
+#regionpick{
+    margin-bottom:20px;
+}
+#filialpick{
+    margin-bottom:20px;
+}
+#datepick{
+    margin-bottom: 20px;
+    
+}
+#uploadBtn{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+#tableBericht{
+    margin-top: 20px;
+}
+
+.picker__date-display, .picker__weekday-display{
+    background-color: #ad1457;
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected { 
+    background-color: #ad1457;
+}
+.picker__close { 
+    color: #ad1457 !important;
+}
+.picker__today { 
+    color: #ad1457 !important;
+}
+.picker__day.picker__day--today { 
+    color: #ad1457; 
+}
+
+ul.dropdown-content.select-dropdown li span {
+    color: #ad1457; /* no need for !important :) */
+}
+
+
+
+.picker__box{
+    background-color: #ad1457;
+}
+
+.picker__date-display, .picker__weekday-display{
+    background-color: #ad1457;
+}

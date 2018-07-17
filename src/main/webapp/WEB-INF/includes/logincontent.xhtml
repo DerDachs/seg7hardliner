@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <!-- Compiled and minified CSS -->
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/materialize.css"/>
+        <h:outputStylesheet name="css/homestyle.css"/>
+
+        <!--Import JQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    <h:body>
+        <script src="resources/scripts/wz_tooltip.js" type="text/javascript" space="preserve"></script>
+        <div class="center-align">
+            <div id="loginContainer" class="container">
+                <div class="row offset-s3">
+                    <div class="col s6 offset-s3">
+                        <div id="loginCard" class="card ">
+                            <div class="card-content center">
+                                <!--  LoginHeader (Group) -->
+                                <div id="loginHeader" class="center-align">
+                                    <!--  Card-Title - Login -->
+                                    <div class="card-title">
+                                        <i class="small material-icons">account_box</i> <span
+                                            class="card-title">Login</span>
+                                    </div>
+                                </div>
+                                <h:form>
+                                    <!--  Username Text Field -->
+                                    <div id="usernameField" class="input-field col s12">
+                                        <h:inputText id="username" class="validate" requiredMessage="" value="#{loginBean.userName}"/> 
+                                        <label for="username" class="active">Username</label>
+                                    </div>
+                                    <!--  Password Text Field -->
+                                    <div id="passwordField" class=" input-field col s12">
+                                        <p:password id="password"  class="validate" requiredMessage="#{MSG.PASSWORDERROR}" value="#{loginBean.password}" /> 
+                                        <label for="password" class="active">Password</label>
+                                    </div>
+                                    <!--  Send Button -->
+                                    <div id="anmelden">
+                                        <h:commandLink id="anmeldeButton" value="#{MSG.SIGNIN}" class="btn blue-grey" type="submit" action="#{loginBean.authenticate()}"><i class="material-icons right">send</i></h:commandLink>
+                                    </div>
+                                    <!--  Passwort vergessen -->
+                                    <label for="forgot"><a href="forgot.xhtml">Passwort vergessen</a></label><br></br>
+                                    <!--  Registrierung -->
+                                    <label for="register"><a href="register.xhtml">Registrieren</a></label>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p:separator />
+    </h:body>
+</ui:composition>

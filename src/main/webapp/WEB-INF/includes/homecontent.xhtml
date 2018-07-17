@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <!-- Compiled and minified CSS -->
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/materialize.css"/>
+        <h:outputStylesheet name="css/procontentstyle.css"/>
+        <h:outputStylesheet name="css/prouploadtstyle.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    <h:body>
+        <div class="center-align">
+            <div class="card">
+                <div class="container">
+                    <div class="card-content">
+                        <div id="countrypick" class="input-field center-align" >
+                            <select>
+                                <option value="" >Land auswählen</option>
+                                <option value="1">Deutschland</option>
+                                <option value="2">Österreich</option>
+                                <option value="3">Schweiz</option>
+                            </select>
+                            <label>Länderwahl</label>
+                        </div>
+                        <div id="regionpick" class="input-field center-align">
+                            <select>
+                                <option value="">Region auswählen</option>
+                                <option value="1">Deutschland</option>
+                                <option value="2">Österreich</option>
+                                <option value="3">Schweiz</option>
+                            </select>
+                            <label>Regionwahl</label>
+                        </div>
+                        <div id="filialpick" class="input-field center-align">
+                            <select>
+                                <option value="">Filiale auswählen</option>
+                                <option value="1">Deutschland</option>
+                                <option value="2">Österreich</option>
+                                <option value="3">Schweiz</option>
+                            </select>
+                            <label>Filialwahl</label>
+                        </div>
+
+                        <!--                        <div id="datepick" class="input-field center-align ">
+                                                    <input id="datepick" type="text" class="datepicker"/>
+                                                    <label>Datumswahl</label>
+                                                </div>-->
+
+
+                        <div  class="input-field center-align">
+                            <input type="date" class="datepicker "></input>
+                            <label>Date</label>
+                        </div>
+
+
+                        <p:separator/>
+                        <a id="uploadBtn" href="proupload.xhtml" class=" btn-large   pink darken-3 waves-effect waves-pink white-text tooltipped" data-position="bottom" data-tooltip="HELP aves-effect waves-light ME"><i class="material-icons right">file_upload</i>hochladen</a>
+                        <p:separator/>
+                        <div id="tableBericht" class="responsive-table">
+                            <p:dataTable var="car" value="#{berichteBean.bericht}">
+                                <p:column headerText="Id" style="color: #ad1457; background-color: #bdbdbd">
+                                    <h:outputText value="#{bericht.id}" />
+                                </p:column>
+
+                                <p:column headerText="Date" style="color: #ad1457; background-color: #bdbdbd">
+                                    <h:outputText value="#{bericht.date}" />
+                                </p:column>
+
+                                <p:column headerText="Gang" style="color: #ad1457; background-color: #bdbdbd">
+                                    <h:outputText value="#{bericht.gang}" />
+                                </p:column>
+
+                                <p:column headerText="Filiale" style="color: #ad1457; background-color: #bdbdbd">
+                                    <h:outputText value="#{bericht.filiale}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('select').formSelect();
+                $('.datepicker').pickadate({
+                    selectMonths: true, // Creates a dropdown to control month
+                    selectYears: 15 // Creates a dropdown of 15 years to control year
+                });
+                $('.tooltipped').tooltip();
+            });
+
+
+
+
+
+
+//            $(document).ready(function () {
+//                $('select').formSelect();
+//                $('.datepicker').datepicker({
+//                    autoClose: true,
+//                    format: 'dd mmm yyyy',
+//                    setDefaultDate: true
+//                });
+//                $('.tooltipped').tooltip();
+//            });
+
+//            $(document).ready(function () {
+//                $('.datepicker').pickadate({
+//                    selectMonths: true, // Creates a dropdown to control month
+//                    selectYears: 15 // Creates a dropdown of 15 years to control year
+//                });
+//            });
+        </script>        
+    </h:body>
+</ui:composition>

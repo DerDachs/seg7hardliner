@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="./WEB-INF/templates/defaultTemplate.xhtml">
+
+
+    <ui:define name="title">#{MSG.IMPRESSUM}</ui:define>
+
+    <ui:define name="top">
+        <ui:include src="/WEB-INF/includes/navbar.xhtml"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="text-align: justify">
+            
+                <div class="row offset-s3">
+                    <div class="col s6 offset-s3">
+
+                            
+                                <h:form>
+                                    <p>Diese Internetseite wird betrieben von:</p> 
+                                    <p>Schwarz Dienstleistung KG</p> 
+                                    <p>Stiftsbergstraße 1</p> 
+                                    <p>74172 Neckarsulm</p> 
+                                    <p>Sitz: Neckarsulm </p>
+                                    <p>Amtsgericht Stuttgart: HRA 105009 </p>
+                                    <p>Die Schwarz Dienstleistung KG wird vertreten durch die Schwarz Dienstleistung Beteiligungs-GmbH mit Sitz in Neckarsulm, Amtsgericht Stuttgart, HRB 109304, die ihrerseits gemeinsam durch zwei gesamtvertretungsberechtigte Geschäftsführer, u.a. Andreas Strähle, Michael Weißberg vertreten wird. USt-IdNr.: DE814754232 </p>                      </h:form>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
+                </div>
+            
+
+        
+    </ui:define>
+
+    <ui:define name="bottom">
+        <ui:include src="/WEB-INF/includes/footer.xhtml"/>
+
+    </ui:define>
+</ui:composition>

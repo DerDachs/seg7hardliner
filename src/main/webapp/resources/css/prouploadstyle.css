@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12.06.2018, 15:57:26
+    Author     : dachs
+*/
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 1px grey;
+    padding: 10px;
+}
+
+#projekteDropdown{
+    background-color: grey;
+    border:2px white;
+}
+
+#uploadContainer{
+    padding: 15px;
+}
+
+#fileBtn{
+    width: 50%;
+}
+
+#uploadButton{
+   
+    
+}
+
+
+.waves-effect.waves-pink .waves-ripple {
+  background-color: rgba(194, 24, 91, 1);
+}

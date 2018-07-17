@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12.06.2018, 14:56:31
+    Author     : dachs
+*/
+
+.nav-extended{
+    background-color: grey;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 1px grey;
+    padding: 10px;
+}
+
+#projekteDropdown{
+    background-color: grey;
+    border:2px white;
+}
+
+#loginContainer{
+    padding:15px;
+}
+
+#anmeldeButton{
+    margin-bottom:5px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer{
+    background-color: grey !important;
+}
+
+#logo{
+    padding: 5px;
+}
+
+#menuicon{
+    float: right;
+}

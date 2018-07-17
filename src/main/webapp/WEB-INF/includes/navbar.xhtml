@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <!-- Compiled and minified CSS -->
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/materialize.css"/>
+        <h:outputStylesheet name="css/homestyle.css"/>
+        <!--Import JQuery -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <!-- Compiled and minified JavaScript -->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head>
+    <h:body>
+
+        <nav class="nav-extended">
+            <div id="logo" class="nav-wrapper">   
+
+                <a href="home.xhtml"><img class="img" width="150" src="images/home/bildheader_u3.png" alt="" /></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#!" ><i class="material-icons" >notifications_none</i></a></li>
+                    <li><a href="#!"><i class="material-icons">settings</i></a></li>
+                    <li><a href="help.xhtml"><i class="material-icons">info_outline</i></a></li>
+                    <li><a href="#!"><i class=" material-icons" >account_box</i></a></li>
+
+                </ul>
+            </div>
+
+            <ul id="projekteDropdown" class="dropdown-content">
+                <li><a href="#!">Projekt 1</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Projekt 2</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Projekt 3</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Projekt 4</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Projekt 5</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Projekt 6</a></li>
+                <li class="divider"></li>
+                <li><a href="prohomepage.xhtml">Projekt 7</a></li>
+            </ul>
+            <div class="nav-wrapper">
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="home.xhtml">Home</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="projekteDropdown">Projekte<i class="material-icons right">arrow_drop_down</i></a></li>
+                   
+                </ul>
+            </div>
+        </nav>
+
+<!--        <ul id="slide-out" class="sidenav light-blue">
+            <li><div class="user-view">
+                    <div class="background">
+                        <img src="images/home/office.jpg"/>
+                    </div>
+                    <a href="#user"><img class="circle" src="images/home/timo.jpg"/></a>
+                    <a href="#name"><span class="white-text name">Timo</span></a>
+                    <a href="#email"><span class="white-text email">dachsweg@hs-pforzheim.de</span></a>
+                </div></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Subheader</a></li>
+            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>-->
+        <!--<li><a id="menuicon" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons grey">account_box</i></a></li>-->
+
+        <script>
+            $(document).ready(function () {
+                $('.dropdown-trigger').dropdown({
+                    inDuration: 300,
+                    outDuration: 225,
+                    constrain_width: true,
+                    hover: false,
+                    gutter: 0,
+                    belowOrigin: false
+                });
+                $('.sidenav').sidenav({
+                    edge: 'right'
+                });
+            });
+            
+    
+
+        </script>
+
+    </h:body>
+</ui:composition>
