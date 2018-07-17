@@ -9,6 +9,8 @@ and open the template in the editor.
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
+    
+   
     <h:head>
         <!--Import Google Icon Font-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
@@ -27,6 +29,9 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <script src="resources/scripts/wz_tooltip.js" type="text/javascript" space="preserve"></script>
+        
+        
+        
         <div class="center-align">
             <div id="loginContainer" class="container">
                 <div class="row offset-m3">
@@ -52,11 +57,11 @@ and open the template in the editor.
                                         <div class="input-field inline">
                                             <input id="email_inline" type="email" class="validate"/>
                                             <label for="email_inline">bitte hier eingeben</label>
-                                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                                            <span class="helper-text" data-error="bitte überprüfen Sie ihre eingegebene E-Mail-Adresse" data-success="korrekte E-Mail-Adresse"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="login.xhtml" style="align-content: center" class=" pink darken-3 waves-effect  white-text waves-light btn">Absenden</a>
+                                <a  onclick ="M.toast({html: 'E-Mail wurde versendet'})" href="login.xhtml" style="align-content: center" class=" pink darken-3 waves-effect  white-text waves-light btn">Absenden</a>
                                 
                                 
                                 <!--                                <h:panelGrid columns="2" id="matchGrid" cellpadding="500">
@@ -80,4 +85,10 @@ and open the template in the editor.
             </div>
         </div>
     </h:body>
+    
+    <script type="text/javascript" src="js/materialize.min.js">
+        M.toast({html: 'nicht verfügbar'})
+        
+        </script>
+    
 </ui:composition>

@@ -84,7 +84,7 @@
 
                                         
                                         
-                                <a href="login.xhtml" style="align-content: center" class=" pink darken-3 waves-effect  white-text waves-light btn"> Registrieren </a>
+                                <a onclick ="M.toast({html: 'Registrierung wurde versendet'})" href="login.xhtml" style="align-content: center" class=" pink darken-3 waves-effect  white-text waves-light btn"> Registrieren </a>
                                 
 
 <!--                                        <p:outputLabel for="firstName" value="Vorname:" />
@@ -115,4 +115,9 @@
         </div>
        
     </h:body>
+    
+        <script type="text/javascript" src="js/materialize.min.js">
+        M.toast({html: 'nicht verfügbar'})
+        
+        </script>
 </ui:composition>
