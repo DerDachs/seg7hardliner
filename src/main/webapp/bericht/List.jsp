@@ -25,15 +25,15 @@
                     <h:dataTable value="#{bericht.berichtItems}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name"/>
+                                <h:outputText value="Berichtid"/>
                             </f:facet>
-                            <h:outputText value="#{item.name}"/>
+                            <h:outputText value="#{item.berichtid}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Date"/>
+                                <h:outputText value="Datum"/>
                             </f:facet>
-                            <h:outputText value="#{item.date}"/>
+                            <h:outputText value="#{item.datum}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -43,9 +43,21 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Filiale"/>
+                                <h:outputText value="Name"/>
                             </f:facet>
-                            <h:outputText value="#{item.filiale}"/>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="FkFiliale"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkFiliale}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

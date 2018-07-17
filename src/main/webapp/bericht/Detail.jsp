@@ -35,21 +35,21 @@
                                 <f:param name="jsfcrud.currentBericht" value="#{jsfcrud_class['de.hspf.hardliner.view.bericht.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][bericht.bericht][bericht.converter].jsfcrud_invoke}"/>
                                 <f:param name="jsfcrud.currentFiliale" value="#{jsfcrud_class['de.hspf.hardliner.view.bericht.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][bericht.bericht.fkFiliale][filiale.converter].jsfcrud_invoke}"/>
                                 <f:param name="jsfcrud.relatedController" value="bericht"/>
-                                <f:param name="jsfcrud.relatedControllerType" value="de.hspf.hardliner.view.bericht.BerichtController"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="de.hspf.hardliner.view.bericht.BerichtController1"/>
                             </h:commandLink>
                             <h:outputText value=" "/>
                             <h:commandLink value="Edit" action="#{filiale.editSetup}">
                                 <f:param name="jsfcrud.currentBericht" value="#{jsfcrud_class['de.hspf.hardliner.view.bericht.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][bericht.bericht][bericht.converter].jsfcrud_invoke}"/>
                                 <f:param name="jsfcrud.currentFiliale" value="#{jsfcrud_class['de.hspf.hardliner.view.bericht.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][bericht.bericht.fkFiliale][filiale.converter].jsfcrud_invoke}"/>
                                 <f:param name="jsfcrud.relatedController" value="bericht"/>
-                                <f:param name="jsfcrud.relatedControllerType" value="de.hspf.hardliner.view.bericht.BerichtController"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="de.hspf.hardliner.view.bericht.BerichtController1"/>
                             </h:commandLink>
                             <h:outputText value=" "/>
                             <h:commandLink value="Destroy" action="#{filiale.destroy}">
                                 <f:param name="jsfcrud.currentBericht" value="#{jsfcrud_class['de.hspf.hardliner.view.bericht.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][bericht.bericht][bericht.converter].jsfcrud_invoke}"/>
                                 <f:param name="jsfcrud.currentFiliale" value="#{jsfcrud_class['de.hspf.hardliner.view.bericht.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][bericht.bericht.fkFiliale][filiale.converter].jsfcrud_invoke}"/>
                                 <f:param name="jsfcrud.relatedController" value="bericht"/>
-                                <f:param name="jsfcrud.relatedControllerType" value="de.hspf.hardliner.view.bericht.BerichtController"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="de.hspf.hardliner.view.bericht.BerichtController1"/>
                             </h:commandLink>
                             <h:outputText value=" )"/>
                         </h:panelGroup>

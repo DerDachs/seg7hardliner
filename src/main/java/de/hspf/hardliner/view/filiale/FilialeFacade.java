@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.hspf.hardliner.view.bericht;
+package de.hspf.hardliner.view.filiale;
 
 import de.hspf.hardliner.model.Filiale;
+import de.hspf.hardliner.view.bericht.AbstractFacade;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
