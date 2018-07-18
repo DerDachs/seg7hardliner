@@ -4,8 +4,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:p="http://primefaces.org/ui">
     <h:head>
         <!--Import Google Icon Font-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
@@ -41,53 +40,7 @@
                                 <h:form>
                                     <h:panelGrid columns="2" cellpadding="5" id="matchGrid">
                                         
-                                        
-                                        
-                                       
-
-                                    
-                                     <div class="row">
-                                            <div class="input-field col s12">
-                                                <input placeholder="Vorname" id="first_name" type="text" class="validate"/>
-                                                    <label for="first_name">First Name</label>
-                                            </div>
-                                        </div>
-                                        
-                                         <div class="row">
-                                            <div class="input-field col s12">
-                                                <input placeholder="Nachname" id="firsrt_name" type="text" class="validate"/>
-                                                    <label for="first_name">Last Name</label>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <input id="email" placeholder="E-Mail-Adresse"  type="email" class="validate"/>
-                                                    <label for="email">E-Mail</label>
-                                                    <span class="helper-text" data-error="bitte überprüfen Sie ihre eingegebene E-Mail-Adresse" data-success="korrekte E-Mail-Adresse"></span>
-                                            </div>
-                                        </div>
-                                        
-                                         <div class="row">
-                                            <div class="input-field col s12">
-                                                <input placeholder="Benutzername" id="first_neame" type="text" class="validate"/>
-                                                    <label for="first_name">Username</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <input id="password" placeholder="Kennwort" type="password" class="validate"/>
-                                                    <label for="password">Password</label>
-                                            </div>
-                                        </div>
-
-                                        
-                                        
-                                <a onclick ="M.toast({html: 'Registrierung wurde versendet'})" href="login.xhtml" style="align-content: center" class=" pink darken-3 waves-effect  white-text waves-light btn"> Registrieren </a>
-                                
-
-<!--                                        <p:outputLabel for="firstName" value="Vorname:" />
+                                        <p:outputLabel for="firstName" value="Vorname:" />
                                         <p:inputMask id="firstName" value="#{maskView.firstName}" mask="" placeholder="Max"/>
                                         
                                         <p:outputLabel for="name" value="Name:" />
@@ -101,9 +54,8 @@
                                                    
                                             <h:outputLabel for="pwd1" value="Password:" />
                                             <p:password id="pwd1" value="#{maskView.password}" match="pwd2" feedback="true" inline="true" label="Password" required="true"/>
-                                           
-                                                <p:commandButton value="Submit" update="matchGrid" oncomplete="PF('dlg').show()"/>-->
-                                       
+
+                                        <p:commandButton value="Submit" update="matchGrid" oncomplete="PF('dlg').show()"/>
                                     </h:panelGrid>
                                 </h:form>
                             </div>
@@ -113,11 +65,6 @@
             </div>
 
         </div>
-       
+        <p:separator />
     </h:body>
-    
-        <script type="text/javascript" src="js/materialize.min.js">
-        M.toast({html: 'nicht verfügbar'})
-        
-        </script>
 </ui:composition>

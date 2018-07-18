@@ -41,7 +41,6 @@
                                 <f:selectItem value="Select Region" noSelectionOption="true"/>
                                 <f:selectItems value="#{filialeBean.filiale}"/>
                                 <f:ajax execute="filiale" />
-                            </h:selectOneMenu>
                             <div id="regionpick" class="input-field center-align">
                                 <select>
                                     <option value="">Region auswählen</option>
@@ -51,6 +50,17 @@
                                 </select>
                                 <label>Regionwahl</label>
                             </div>
+                           
+                            <div id="regionpick" class="input-field center-align">
+                                <select>
+                                    <option value="">Region auswählen</option>
+                                    <option value="1">Deutschland</option>
+                                    <option value="2">Österreich</option>
+                                    <option value="3">Schweiz</option>
+                                </select>
+                                <label>Regionwahl</label>
+                            </div>
+                        
                             <div id="filialpick" class="input-field center-align">
                                 <select>
                                     <option value="">Filiale auswählen</option>
@@ -67,7 +77,7 @@
                                                         <label>Datumswahl</label>
                                                     </div>-->
 
-
+                           
                             <div  class="input-field center-align">
                                 <input type="date" class="datepicker "></input>
                                 <label>Date</label>
@@ -77,11 +87,22 @@
                         <p:separator/>
                         <a id="uploadBtn" href="proupload.xhtml" class=" btn-large   pink darken-3 waves-effect waves-pink white-text tooltipped" data-position="bottom" data-tooltip="HELP aves-effect waves-light ME"><i class="material-icons right">file_upload</i>hochladen</a>
                         <p:separator/>
+                        
                         <div id="tableBericht" class="responsive-table">
+                            
                             <h:dataTable value="#{berichtManager.getBerichte()}" var="bericht">
-                                <p:column headerText="Id" style="color: #ad1457; background-color: #bdbdbd">
+                                
+                                <f:facet name="header">Bericht </f:facet>
+                                
+                                <p:column >
+                                    <f:facet name="IDHEADER">
+                                        <h:outputText  > ID </h:outputText>
+                                    </f:facet>
+                                    
                                     <h:outputText value="#{bericht.berichtid}" />
                                 </p:column>
+<!--                                
+-->                  
 
                                 <p:column headerText="Date" style="color: #ad1457; background-color: #bdbdbd">
                                     <h:outputText value="#{bericht.datum}" />
@@ -135,3 +156,12 @@
         </script>        
     </h:body>
 </ui:composition>
+                            </h:selectOneMenu>-->
+                            
+                            <div id="Land" class="input-field center-align">
+                                <select>
+                                    <option value="">Deutschland</option>
+                                </select>
+                                <label>Regionwahl</label>
+                            </div>
+     
