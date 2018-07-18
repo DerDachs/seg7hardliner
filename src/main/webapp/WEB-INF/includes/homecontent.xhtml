@@ -27,12 +27,12 @@
                 <div class="container">
                     <div class="card-content">
                         <h:form>
-<!--                            <h:selectOneMenu id="bland" value="#{filialeBean.filialeSelected}">
-                                <f:selectItem  value="Select Bundesland" noSelectionOption="true"/>
-                                <f:selectItem value="#{filialeBean.bundesland}" />
+                            <h:selectOneMenu id="bland" value="#{filialeBean.bundeslandSelected}">
+                                <f:selectItem value="Select Bundesland" noSelectionOption="true"/>
+                                <f:selectItems value="#{filialeBean.bundesland}" />
                                 <f:ajax execute="bland" render="region"/>
-                            </h:selectOneMenu>-->
-<!--                            <h:selectOneMenu id="region" value="#{filialeBean.filialeSelected}">
+                            </h:selectOneMenu>
+                            <h:selectOneMenu id="region" value="#{filialeBean.regionSelected}">
                                 <f:selectItem value="Select Region" noSelectionOption="true"/>
                                 <f:selectItems value="#{filialeBean.region}"/>
                                 <f:ajax execute="region" render="filiale"/>
@@ -41,15 +41,6 @@
                                 <f:selectItem value="Select Region" noSelectionOption="true"/>
                                 <f:selectItems value="#{filialeBean.filiale}"/>
                                 <f:ajax execute="filiale" />
-                            </h:selectOneMenu>-->
-                            
-                            <div id="Land" class="input-field center-align">
-                                <select>
-                                    <option value="">Deutschland</option>
-                                </select>
-                                <label>Regionwahl</label>
-                            </div>
-     
                             <div id="regionpick" class="input-field center-align">
                                 <select>
                                     <option value="">Region auswählen</option>
@@ -165,3 +156,12 @@
         </script>        
     </h:body>
 </ui:composition>
+                            </h:selectOneMenu>-->
+                            
+                            <div id="Land" class="input-field center-align">
+                                <select>
+                                    <option value="">Deutschland</option>
+                                </select>
+                                <label>Regionwahl</label>
+                            </div>
+     

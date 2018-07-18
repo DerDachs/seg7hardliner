@@ -25,6 +25,8 @@ public class FilialeBean {
     @EJB
     private FilialeFacade filialeFacade;
     private String filialeSelected;
+    private String bundeslandSelected;
+    private String regionSelected;
     private List<SelectItem> selectFiliale;
     private List<SelectItem> selectRegion;
     private List<SelectItem> selectBundesland;
@@ -46,8 +48,8 @@ public class FilialeBean {
         return selectBundesland;
     }
 
-    public List<SelectItem> getRegion(String bland){
-        List<Filiale> f = filialeFacade.findRegion(bland);
+    public List<SelectItem> getRegion(){
+        List<Filiale> f = filialeFacade.findRegion(bundeslandSelected);
         selectRegion = new ArrayList<>();
         int i = 0;
         for (Filiale filiale : f) {
@@ -57,8 +59,8 @@ public class FilialeBean {
         return selectRegion;
     }
     
-    public List<SelectItem> getFiliale(String region){
-        List<Filiale> f = filialeFacade.findFiliale(region);
+    public List<SelectItem> getFiliale(){
+        List<Filiale> f = filialeFacade.findFiliale(regionSelected);
         selectFiliale = new ArrayList<>();
         int i = 0;
         for (Filiale filiale : f) {
@@ -76,4 +78,33 @@ public class FilialeBean {
         this.filialeSelected = filialeSelected;
     }
 
+    public String getBundeslandSelected() {
+        return bundeslandSelected;
+    }
+
+    public void setBundeslandSelected(String bundeslandSelected) {
+        this.bundeslandSelected = bundeslandSelected;
+    }
+
+    public String getRegionSelected() {
+        return regionSelected;
+    }
+
+    public void setRegionSelected(String regionSelected) {
+        this.regionSelected = regionSelected;
+    }
+
+    public List<SelectItem> getSelectFiliale() {
+        return selectFiliale;
+    }
+
+    public List<SelectItem> getSelectRegion() {
+        return selectRegion;
+    }
+
+    public List<SelectItem> getSelectBundesland() {
+        return selectBundesland;
+    }
+
+    
 }
