@@ -88,41 +88,48 @@
                     <p:separator/>
 
 
-                    <div id="tableBericht" class="responsive-table">
-                        <div id="tableBericht" class="table-of-contents">
-                            <h:form>
-                                <h:dataTable value="#{berichtManager.itemsAvailableSelectMany}" var="item">
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="ID"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.berichtid}" />
-                                    </h:column>
-
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Datum"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.datum}" />
-                                    </h:column>
-
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Region"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.gang}" />
-                                    </h:column>
-
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Status"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.status}" />
-                                    </h:column>
-                                </h:dataTable>
-                            </h:form>
-                        </div>
-                    </div>
+                    <h:form>
+                        <h1><h:outputText value="Berichte"/></h1>
+                        <h:dataTable value="#{filialeManager.itemsAvailableSelectMany}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Filialid"/>
+                                </f:facet>
+                                <h:outputText value="#{item.filialid}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Filialname"/>
+                                </f:facet>
+                                <h:outputText value="#{item.filialname}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Bundesland"/>
+                                </f:facet>
+                                <h:outputText value="#{item.bundesland}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Region"/>
+                                </f:facet>
+                                <h:outputText value="#{item.region}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Analyse"/>
+                                </f:facet>
+                                <i class="material-icons green-text">done</i>
+                                <i class="material-icons red-text">clear</i>
+                            </h:column>
+                             <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=" "/>
+                                </f:facet>
+                                 <i class="material-icons tooltipped" href="" data-position="bottom" data-tooltip="Bericht ansehen">info</i>
+                             </h:column>
+                        </h:dataTable>
+                    </h:form>
 
                 </div>
             </div>
