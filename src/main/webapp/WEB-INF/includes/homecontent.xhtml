@@ -36,18 +36,6 @@
                                 <label>Länderwahl</label>
                             </div>
                             <div id="statepick" class="input-field center-align" >
-<!--                                <p:selectOneMenu id="bundesland" class="col s9 m8" value="#{dropdownView.selectedBundesland}">
-                                    <f:selectItem itemValue="#{null}" itemLabel="- - Bundesland auswählen - -" />
-                                    <f:selectItems value="#{filialeManager.bland}"/>
-                                    <f:ajax listener="#{dropdownView.changeBundesland}" render="filialRegion" />
-                                </p:selectOneMenu>-->
-                                <h:selectOneMenu value="#{dropdownView.selectedBundesland}">
-                                    <f:selectItem itemValue="#{null}" itemLabel="-- Bundesland auswählen --"/>
-                                    <f:selectItems value="#{filialeManager.bland}"></f:selectItems>
-                                    <f:ajax listener="#{dropdownView.changeBundesland}" render="filialRegion" />
-                                </h:selectOneMenu>
-                            </div>  
-                            <div id="statepick" class="input-field center-align" >
                                 <select>
                                     <option value="0" >Bundesland auswählen</option>
                                     <option value="1">Baden-Württemberg</option>

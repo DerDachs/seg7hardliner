@@ -48,6 +48,7 @@ public class BerichtManager implements Serializable {
     
     private final String date = "2018-07-03";
     private int gang = 0;
+    private final long id = 7;
     private boolean status = true;
     private final int max = 25;
     private final int min = 0;
@@ -90,6 +91,7 @@ public class BerichtManager implements Serializable {
     
     public void create() {
         Bericht bericht = new Bericht();
+        bericht.setBerichtid(id);
         bericht.setDatum(date);
         bericht.setGang(gang);
         bericht.setName("Bericht " + bericht.getBerichtid());
