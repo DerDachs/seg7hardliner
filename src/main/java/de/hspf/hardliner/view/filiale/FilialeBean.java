@@ -27,9 +27,9 @@ public class FilialeBean {
     private String filialeSelected;
     private String bundeslandSelected;
     private String regionSelected;
-    private List<SelectItem> selectFiliale;
-    private List<SelectItem> selectRegion;
-    private List<SelectItem> selectBundesland;
+    private List<String> selectFiliale;
+    private List<String> selectRegion;
+    private List<String> selectBundesland;
 
     /**
      * Creates a new instance of FilialeBean
@@ -37,36 +37,31 @@ public class FilialeBean {
     public FilialeBean() {
     }
 
-    public List<SelectItem> getBundesland() {
+    public List<String> getBundesland() {
         List<Filiale> f = filialeFacade.findBundesland();
         selectBundesland = new ArrayList<>();
-        int i = 0;
-        for (Filiale filiale : f) {
-            selectBundesland.add(new SelectItem(i, filiale.getBundesland()));
-            i++;
-        }
+
+        f.forEach((filiale) -> {
+            selectBundesland.add(filiale.getBundesland());
+        });
         return selectBundesland;
     }
 
-    public List<SelectItem> getRegion(){
+    public List<String> getRegion(){
         List<Filiale> f = filialeFacade.findRegion(bundeslandSelected);
         selectRegion = new ArrayList<>();
-        int i = 0;
-        for (Filiale filiale : f) {
-            selectRegion.add(new SelectItem(i, filiale.getRegion()));
-            i++;
-        }        
+        f.forEach((filiale) -> {
+            selectRegion.add( filiale.getRegion());
+        });        
         return selectRegion;
     }
     
-    public List<SelectItem> getFiliale(){
+    public List<String> getFiliale(){
         List<Filiale> f = filialeFacade.findFiliale(regionSelected);
         selectFiliale = new ArrayList<>();
-        int i = 0;
-        for (Filiale filiale : f) {
-            selectFiliale.add(new SelectItem(i, filiale.getFilialname()));
-            i++;
-        }        
+        f.forEach((filiale) -> {
+            selectFiliale.add(filiale.getFilialname());
+        });        
         return selectFiliale;
     }
     
@@ -94,15 +89,15 @@ public class FilialeBean {
         this.regionSelected = regionSelected;
     }
 
-    public List<SelectItem> getSelectFiliale() {
+    public List<String> getSelectFiliale() {
         return selectFiliale;
     }
 
-    public List<SelectItem> getSelectRegion() {
+    public List<String> getSelectRegion() {
         return selectRegion;
     }
 
-    public List<SelectItem> getSelectBundesland() {
+    public List<String> getSelectBundesland() {
         return selectBundesland;
     }
 
