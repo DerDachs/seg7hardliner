@@ -49,8 +49,8 @@
                                     <br/>
                                     <br/>
                                     
-                                    <p:commandButton value="Upload" ajax="false" actionListener="#{fileUploadController.upload()}" onclick="M.toast({html: 'Bild wird hochgeladen!'})" class="btn pink darken-3 white-text waves-effect waves-pink " />
-                                    
+                                    <!--<p:commandButton value="Upload" ajax="false" actionListener="#{fileUploadController.upload()}" onclick="M.toast({html: 'Bild wird hochgeladen!'})" class="btn pink darken-3 white-text waves-effect waves-pink " />-->
+                                    <h:commandLink id="uploadButton" value="#{MSG.UPLOAD}" class="btn pink darken-3 waves-effect  white-text "  type="submit" action="#{fileUploadController.upload()}" onclick="M.toast({html: 'Bild wird hochgeladen!'})"><i class="material-icons right">file_upload</i></h:commandLink>
                                    
                                     
             
@@ -65,4 +65,13 @@
             </div>
         </div>
     </h:body>
+    <script>
+          
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+
+
+
+    </script>
 </ui:composition>
