@@ -30,6 +30,8 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Random;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -43,9 +45,23 @@ public class BerichtManager implements Serializable {
     private BerichtFacade ejbFacade;
     private List<Bericht> items = null;
     private Bericht selected;
-
+    
+    private final String date = "2018-07-03";
+    private int gang = 0;
+    private boolean status = true;
+    private final int max = 25;
+    private final int min = 0;
+    
+    
     
     public BerichtManager() {
+    }
+    
+    @PostConstruct
+    public void init(){
+        Random rand = new Random();
+        gang = rand.nextInt(max - min + 1) + min;
+        status = rand.nextBoolean();
     }
     
     public Bericht getSelected() {
@@ -73,10 +89,12 @@ public class BerichtManager implements Serializable {
     }
     
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BerichtCreated"));
-        if (!JsfUtil.isValidationFailed()) {
-            items = null;    // Invalidate list of items to trigger re-query.
-        }
+        Bericht bericht = new Bericht();
+        bericht.setDatum(date);
+        bericht.setGang(gang);
+        bericht.setName("Bericht " + bericht.getBerichtid());
+        bericht.setStatus(status);
+        ejbFacade.create(bericht);
     }
 
     public void update() {

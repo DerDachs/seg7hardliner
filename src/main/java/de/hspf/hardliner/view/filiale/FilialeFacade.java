@@ -52,11 +52,23 @@ public class FilialeFacade extends AbstractFacade<Filiale> {
         return (List<Filiale>) q.getResultList();
     }
 
-    public List<Filiale> findBundesland() {
-        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        Query q = getEntityManager().createQuery(cq);
-        return (List<Filiale>) q.getResultList();
+    public List<Filiale> findDistinct() {
+        List results = em.createNamedQuery("Filiale.findAllDistinct").getResultList();
+        return (List<Filiale>) results;
+    }
+    
+    public List<Filiale> findDistinct(String bundesland) {
+        List results = em.createNamedQuery("Filiale.findRegionDistinct")
+                .setParameter("bundesland", bundesland)
+                .getResultList();
+        return (List<Filiale>) results;
     }
 
+    public List<Filiale> findDistinctFiliale(String region) {
+        List results = em.createNamedQuery("Filiale.findFilialeDistinct")
+                .setParameter("region", region)
+                .getResultList();
+        return (List<Filiale>) results;
+    }
+    
 }

@@ -10,6 +10,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,12 +35,16 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Filiale.findByFilialid", query = "SELECT f FROM Filiale f WHERE f.filialid = :filialid")
     , @NamedQuery(name = "Filiale.findByFilialname", query = "SELECT f FROM Filiale f WHERE f.filialname = :filialname")
     , @NamedQuery(name = "Filiale.findByBundesland", query = "SELECT f FROM Filiale f WHERE f.bundesland = :bundesland")
-    , @NamedQuery(name = "Filiale.findByRegion", query = "SELECT f FROM Filiale f WHERE f.region = :region")})
+    , @NamedQuery(name = "Filiale.findByRegion", query = "SELECT f FROM Filiale f WHERE f.region = :region")
+    , @NamedQuery(name = "Filiale.findAllDistinct", query = "select DISTINCT(f.bundesland) from Filiale f")
+    , @NamedQuery(name = "Filiale.findRegionDistinct", query = "SELECT DISTINCT(f.region) from Filiale f WHERE f.bundesland = :bundesland")
+    , @NamedQuery(name = "Filiale.findFilialeDistinct", query = "SELECT DISTINCT(f.filialname) from Filiale f WHERE f.region = :region")})
 public class Filiale implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "FILIALID", nullable = false)
     private Long filialid;

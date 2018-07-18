@@ -32,10 +32,12 @@ import javax.faces.convert.FacesConverter;
 @SessionScoped
 public class FilialeManager implements Serializable {
 
-    
     @EJB
     private FilialeFacade ejbFacade;
     private List<Filiale> items = null;
+    private List<Filiale> bland = null;
+    private List<Filiale> region = null;
+    private List<Filiale> filiale = null;
     private Filiale selected;
 
     /**
@@ -43,7 +45,7 @@ public class FilialeManager implements Serializable {
      */
     public FilialeManager() {
     }
-    
+
     public Filiale getSelected() {
         return selected;
     }
@@ -51,23 +53,23 @@ public class FilialeManager implements Serializable {
     public void setSelected(Filiale selected) {
         this.selected = selected;
     }
-    
+
     protected void setEmbeddableKeys() {
     }
 
     protected void initializeEmbeddableKey() {
     }
-    
+
     public FilialeFacade getFacade() {
         return ejbFacade;
     }
-    
+
     public Filiale prepareCreate() {
         selected = new Filiale();
         initializeEmbeddableKey();
         return selected;
     }
-    
+
     public void create() {
         persist(JsfUtil.PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("FilialeCreated"));
         if (!JsfUtil.isValidationFailed()) {
@@ -92,6 +94,18 @@ public class FilialeManager implements Serializable {
             items = getFacade().findAll();
         }
         return items;
+    }
+
+    public List<Filiale> getBland() {
+        if (bland == null) {
+            bland = getFacade().findDistinct();
+        }
+        
+        return bland;
+    }
+
+    public void setBland(List<Filiale> bland) {
+        this.bland = bland;
     }
 
     private void persist(JsfUtil.PersistAction persistAction, String successMessage) {
@@ -125,17 +139,21 @@ public class FilialeManager implements Serializable {
     public Filiale getFiliale(java.lang.Long id) {
         return getFacade().find(id);
     }
-    
-    public List<Filiale> getBLand(){
-        return getFacade().findBundesland();
+
+    public List<Filiale> getRegion(String bundesland) {
+        if (region == null) {
+            region = getFacade().findDistinct(bundesland);
+        }
+        
+        return region;
     }
-    
-    public List<Filiale> getRegion(String bland){
-        return getFacade().findRegion(bland);
-    }
-    
-    public List<Filiale> getFiliale(String region){
-        return getFacade().findFiliale(region);
+
+    public List<Filiale> getFiliale(String region) {
+        if (filiale == null) {
+            filiale = getFacade().findDistinctFiliale(region);
+        }
+        
+        return filiale;
     }
 
     public List<Filiale> getItemsAvailableSelectMany() {
@@ -145,8 +163,6 @@ public class FilialeManager implements Serializable {
     public List<Filiale> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
-
-    
 
     @FacesConverter(forClass = Filiale.class)
     public static class FilialeControllerConverter implements Converter {
@@ -189,6 +205,3 @@ public class FilialeManager implements Serializable {
 
     }
 }
-
-    
-

@@ -7,6 +7,8 @@ package de.hspf.hardliner.view.bericht;
 
 import de.hspf.hardliner.model.Bericht;
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -27,6 +29,21 @@ public class BerichtFacade extends AbstractFacade<Bericht> {
 
     public BerichtFacade() {
         super(Bericht.class);
+    }
+    
+    @Override
+    public void create(Bericht bericht){
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.persist(bericht);
+            em.getTransaction().commit();
+        } catch (Exception ex){
+        }finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
     
 }

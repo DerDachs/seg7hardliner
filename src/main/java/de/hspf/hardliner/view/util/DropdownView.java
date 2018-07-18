@@ -6,16 +6,22 @@
 package de.hspf.hardliner.view.util;
 
 import de.hspf.hardliner.model.Filiale;
+import de.hspf.hardliner.view.filiale.FilialeFacade;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.model.SelectItem;
+import org.primefaces.behavior.ajax.AjaxBehavior;
 
 /**
  *
@@ -25,115 +31,118 @@ import javax.faces.context.FacesContext;
 @ViewScoped
 public class DropdownView implements Serializable {
 
-    private Map<String, Map<String, String>> data = new HashMap<String, Map<String, String>>();
-    private Map<String, Map<String, Map<String, String>>> dat = new HashMap<String, Map<String, Map<String, String>>>();
-    private String bundesland;
-    private String region;
-    private String filiale;
-    private Map<String, String> bundeslande;
-    private Map<String, String> regionen;
-    private Map<String, String> filialen;
+    @EJB
+    private FilialeFacade ejbFacade;
+    private String selectedBundesland;
+    private String selectedRegion;
+    private String selectedFiliale;
+    private List<SelectItem> bundeslande;
+    private List<SelectItem> regionen;
+    private List<SelectItem> filialen;
     private FilialeManager fmanager = new FilialeManager();
 
     @PostConstruct
     public void init() {
-        bundeslande = new HashMap<String, String>();
-        bundeslande.put("Baden-Württemberg", "Baden-Württemberg");
-        bundeslande.put("Bayern", "Bayern");
-        bundeslande.put("Hessen", "Hessen");
 
-        Map<String, String> map = new HashMap<String, String>();
-        List<Filiale> flist = fmanager.getFacade().findRegion("Baden-Württemberg");
-        for (Filiale f : flist) {
-            map.put(f.getRegion(), f.getRegion());
-        }
-        data.put("Baden-Württemberg", map);
-
-        map = new HashMap<String, String>();
-        List<Filiale> fliste = fmanager.getFacade().findRegion("Bayern");
-        for (Filiale f : fliste) {
-            map.put(f.getRegion(), f.getRegion());
-        }
-        data.put("Bayern", map);
-
-        map = new HashMap<String, String>();
-        List<Filiale> flisten = fmanager.getFacade().findRegion("Hessen");
-        for (Filiale f : flisten) {
-            map.put(f.getRegion(), f.getRegion());
-        }
-        data.put("Hessen", map);
     }
 
-    public Map<String, Map<String, String>> getData() {
-        return data;
+    public String getSelectedBundesland() {
+        return selectedBundesland;
     }
 
-    public String getBundesland() {
-        return bundesland;
+    public void setSelectedBundesland(String selectedBundesland) {
+        this.selectedBundesland = selectedBundesland;
     }
 
-    public void setBundesland(String bundesland) {
-        this.bundesland = bundesland;
+    public String getSelectedRegion() {
+        return selectedRegion;
     }
 
-    public String getRegion() {
-        return region;
+    public void setSelectedRegion(String selectedRegion) {
+        this.selectedRegion = selectedRegion;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
+    public String getSelectedFiliale() {
+        return selectedFiliale;
     }
 
-    public String getFiliale() {
-        return filiale;
+    public void setSelectedFiliale(String selectedFiliale) {
+        this.selectedFiliale = selectedFiliale;
     }
 
-    public void setFiliale(String filiale) {
-        this.filiale = filiale;
-    }
-
-    public Map<String, String> getBundeslande() {
+    public List<SelectItem> getBundeslande() {
         return bundeslande;
     }
 
-    public void setBundeslande(Map<String, String> bundeslande) {
+    public void setBundeslande(List<SelectItem> bundeslande) {
         this.bundeslande = bundeslande;
     }
 
-    public Map<String, String> getRegionen() {
+    public List<SelectItem> getRegionen() {
         return regionen;
     }
 
-    public void setRegionen(Map<String, String> regionen) {
+    public void setRegionen(List<SelectItem> regionen) {
         this.regionen = regionen;
     }
 
-    public Map<String, String> getFilialen() {
+    public List<SelectItem> getFilialen() {
         return filialen;
     }
 
-    public void setFilialen(Map<String, String> filialen) {
+    public void setFilialen(List<SelectItem> filialen) {
         this.filialen = filialen;
     }
 
-    
-
-    public void onBundeslandChange() {
-        if (bundesland != null && !bundesland.equals("")) {
-            regionen = data.get(bundesland);
-        } else {
-            regionen = new HashMap<String, String>();
+    public void changeBundesland(AjaxBehaviorEvent event) {
+        if (selectedBundesland != null){
+        regionen = listRegion(selectedBundesland);
+        selectedRegion = null;
+        selectedFiliale = null;
+        }else{
+            System.out.println("Hier ging was schief!");
         }
+
+    }
+
+    public void changeRegion(AjaxBehaviorEvent event) {
+        filialen = listFiliale(selectedRegion);
+        selectedFiliale = null;
+
     }
 
     public void displayLocation() {
         FacesMessage msg;
-        if (region != null && bundesland != null) {
-            msg = new FacesMessage("Selected", region + " of " + bundesland);
+        if (selectedRegion != null && selectedBundesland != null) {
+            msg = new FacesMessage("Selected", selectedRegion + " of " + selectedBundesland);
         } else {
             msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected.");
         }
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    private List<SelectItem> listRegion(String bundesland) {
+        List<SelectItem> bland = new ArrayList<SelectItem>();
+
+        if (bundesland != null) {
+            List<Filiale> filiale = (List<Filiale>) ejbFacade.findDistinct(bundesland);
+            for (Filiale f : filiale) {
+                bland.add(new SelectItem(f.getFilialid(), f.getRegion()));
+            }
+        }
+        return bland;
+    }
+
+    private List<SelectItem> listFiliale(String selectedRegion) {
+        List<SelectItem> reg = new ArrayList<SelectItem>();
+
+        if (selectedRegion != null) {
+            List<Filiale> filiale = (List<Filiale>) ejbFacade.findDistinctFiliale(selectedRegion);
+            for (Filiale f : filiale) {
+                reg.add(new SelectItem(f.getFilialid(), f.getFilialname()));
+            }
+        }
+        return reg;
     }
 }
