@@ -55,6 +55,8 @@ public class LoginBean implements Serializable {
             return "home";
         } else {
             ViewContextUtil.getFacesContext().addMessage(null, new FacesMessage("Login failed, either username or password are wrong. You provided:" + getUserName()));
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Wrong", "Login failed, either username or password are wrong. You provided:" + getUserName()));
             return "login";
         }
     }
