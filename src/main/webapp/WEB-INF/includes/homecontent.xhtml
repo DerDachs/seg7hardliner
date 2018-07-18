@@ -89,31 +89,39 @@
 
 
                     <div id="tableBericht" class="responsive-table">
-                        <f:facet name="header" >
-                            Bericht
-                        </f:facet>
-                        <p:dataTable value="#{berichteManager.getBerichte()}" var="bericht">
+                        <div id="tableBericht" class="table-of-contents">
+                            <h:form>
+                                <h:dataTable value="#{berichtManager.itemsAvailableSelectMany}" var="item">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="ID"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.berichtid}" />
+                                    </h:column>
 
-                            <p:column headerText="Id" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.berichtid}" />
-                            </p:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Datum"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.datum}" />
+                                    </h:column>
 
-                            <p:column headerText="Date" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.datum}" />
-                            </p:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Region"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.gang}" />
+                                    </h:column>
 
-                            <p:column headerText="Gang" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.gang}" />
-                            </p:column>
-
-                            <p:column headerText="Filiale" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.fkfiliale}" />
-                            </p:column>
-
-                            <p:column headerText="Status" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.status}" />
-                            </p:column>
-                        </p:dataTable>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Status"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.status}" />
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </div>
                     </div>
 
                 </div>
