@@ -142,7 +142,7 @@ public class FilialeManager implements Serializable {
 
     public List<Filiale> getRegion(String bundesland) {
         if (region == null) {
-            region = getFacade().findDistinct(bundesland);
+            region = getFacade().findDistinct( (Object) bundesland);
         }
         
         return region;

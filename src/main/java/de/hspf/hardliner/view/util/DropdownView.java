@@ -7,17 +7,14 @@ package de.hspf.hardliner.view.util;
 
 import de.hspf.hardliner.model.Filiale;
 import de.hspf.hardliner.view.filiale.FilialeFacade;
-import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
@@ -27,7 +24,7 @@ import org.primefaces.behavior.ajax.AjaxBehavior;
  *
  * @author dachs
  */
-@Named(value = "dropdownView")
+@ManagedBean
 @ViewScoped
 public class DropdownView implements Serializable {
 
@@ -126,9 +123,9 @@ public class DropdownView implements Serializable {
         List<SelectItem> bland = new ArrayList<SelectItem>();
 
         if (bundesland != null) {
-            List<Filiale> filiale = (List<Filiale>) ejbFacade.findDistinct(bundesland);
-            for (Filiale f : filiale) {
-                bland.add(new SelectItem(f.getFilialid(), f.getRegion()));
+            List<Filiale> filiale = ejbFacade.findDistinct( (Object) bundesland);
+            for (Filiale fil : filiale){
+                bland.add(new SelectItem(fil.getFilialid(), fil.getRegion()));
             }
         }
         return bland;

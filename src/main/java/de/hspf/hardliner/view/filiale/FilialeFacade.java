@@ -10,6 +10,7 @@ import de.hspf.hardliner.view.bericht.AbstractFacade;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
@@ -57,11 +58,15 @@ public class FilialeFacade extends AbstractFacade<Filiale> {
         return (List<Filiale>) results;
     }
     
-    public List<Filiale> findDistinct(String bundesland) {
-        List results = em.createNamedQuery("Filiale.findRegionDistinct")
-                .setParameter("bundesland", bundesland)
-                .getResultList();
-        return (List<Filiale>) results;
+    public List<Filiale> findDistinct(Object bundesland) {
+        try {
+            Query q = this.em.createNamedQuery("Filiale.findRegionDistinct");
+            q.setParameter("bundesland", bundesland);
+            return q.getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
+        
     }
 
     public List<Filiale> findDistinctFiliale(String region) {
