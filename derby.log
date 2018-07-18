@@ -1,7 +1,7 @@
-Tue Jul 17 17:10:42 CEST 2018 : Apache Derby Network Server 10.11.1.2 - (1629631) wurde gestartet und ist bereit, Verbindungen auf Port 1527 zu akzeptieren.
+Wed Jul 18 17:49:34 CEST 2018 : Apache Derby Network Server 10.11.1.2 - (1629631) wurde gestartet und ist bereit, Verbindungen auf Port 1527 zu akzeptieren.
 ----------------------------------------------------------------
-Tue Jul 17 17:10:56 CEST 2018:
-Booten von Derby-Version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): Instanz a816c00e-0164-a8cb-2369-00007c526f1d
+Wed Jul 18 17:50:21 CEST 2018:
+Booten von Derby-Version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): Instanz a816c00e-0164-ae15-15de-00007c526f1d
 für Datenbankverzeichnis C:\Users\carol\Documents\NetBeansProjects\seg7hardliner\seg7-hardliner mit Class Loader sun.misc.Launcher$AppClassLoader@266474c2
 Geladen aus file:/C:/Program%20Files/Java/jdk1.8.0_161/db/lib/derby.jar
 java.vendor=Oracle Corporation

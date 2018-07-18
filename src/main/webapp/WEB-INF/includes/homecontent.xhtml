@@ -35,11 +35,11 @@
                                 </select>
                                 <label>Länderwahl</label>
                             </div>
-                            <div id="statepick" class="input-field center-align" >
-                                <h:selectOneMenu value="#{filialeBean.bundeslandSelected}">
-                                    <f:selectItems value="#{filialeBean.getBundesland()}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </div>  
+                            <!--                            <div id="statepick" class="input-field center-align" >
+                                                            <h:selectOneMenu value="#{filialeBean.bundeslandSelected}">
+                                                                <f:selectItems value="#{filialeBean.getBundesland()}"></f:selectItems>
+                                                            </h:selectOneMenu>
+                                                        </div>  -->
                             <div id="statepick" class="input-field center-align" >
                                 <select>
                                     <option value="0" >Bundesland auswählen</option>
@@ -88,33 +88,48 @@
                     <p:separator/>
 
 
-                    <div id="tableBericht" class="responsive-table">
-                        <f:facet name="header" >
-                            Bericht
-                        </f:facet>
-                        <p:dataTable value="#{berichteManager.getBerichte()}" var="bericht">
-
-                            <p:column headerText="Id" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.berichtid}" />
-                            </p:column>
-
-                            <p:column headerText="Date" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.datum}" />
-                            </p:column>
-
-                            <p:column headerText="Gang" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.gang}" />
-                            </p:column>
-
-                            <p:column headerText="Filiale" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.fkfiliale}" />
-                            </p:column>
-
-                            <p:column headerText="Status" style="color: #ad1457; background-color: #bdbdbd">
-                                <h:outputText value="#{bericht.status}" />
-                            </p:column>
-                        </p:dataTable>
-                    </div>
+                    <h:form>
+                        <h1><h:outputText value="Berichte"/></h1>
+                        <h:dataTable value="#{filialeManager.itemsAvailableSelectMany}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Filialid"/>
+                                </f:facet>
+                                <h:outputText value="#{item.filialid}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Filialname"/>
+                                </f:facet>
+                                <h:outputText value="#{item.filialname}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Bundesland"/>
+                                </f:facet>
+                                <h:outputText value="#{item.bundesland}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Region"/>
+                                </f:facet>
+                                <h:outputText value="#{item.region}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Analyse"/>
+                                </f:facet>
+                                <i class="material-icons green-text">done</i>
+                                <i class="material-icons red-text">clear</i>
+                            </h:column>
+                             <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="  "/>
+                                </f:facet>
+                                 <i class="material-icons tooltipped" href="" data-position="bottom" data-tooltip="Bericht bearbeiten">create</i>
+                             </h:column>
+                        </h:dataTable>
+                    </h:form>
 
                 </div>
             </div>
